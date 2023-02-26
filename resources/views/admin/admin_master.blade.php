@@ -22,6 +22,7 @@
   {{-- toaster  --}}
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha384-QE5YE6J8rzgHxYhiUzC6UJ39KfNQ6b5QP5w5+5p5J6e3C5Qf6bRXTdW27Ukv9zU6" crossorigin="anonymous">
 
   </head>
 

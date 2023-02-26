@@ -23,15 +23,19 @@ $data = App\Models\User::find($id);
         </div>
         {{-- end of column  --}}
 
-        <div class="col-md-2">
-
-        </div>
-        {{-- end of column  --}}
+       
 
         <div class="col-md-8">
             <div class="card">
                 <h3 class="text-center"><span class="text-success">Greetings! </span><strong>{{Auth::user()->name}} </strong> Welcome to Easy Online Shop</h3>
+
+                    
             </div>
+        </div>
+        {{-- end of column  --}}
+
+        <div class="col-md-2">
+            
         </div>
         {{-- end of column  --}}
 
