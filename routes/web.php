@@ -66,7 +66,7 @@ Route::get('/delete/sub/subcategory/{id}',[SubSubCategoryController::class,'Dele
 //All Produccts section
 Route::get('/add/products',[ProductsController::class,'AddProducts'])->name('all.products');
 Route::get('/category/sub_subcategory/ajax/{subcategory_id}', [ProductsController::class, 'GetSubSubCategory']);
-
+Route::post('/store/products',[ProductsController::class,'ProductStore'])->name('products.store');
 
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {

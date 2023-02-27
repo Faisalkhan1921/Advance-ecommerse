@@ -18,7 +18,8 @@
         <div class="box-body">
           <div class="row">
             <div class="col">
-                <form novalidate>
+                <form  method="POST" action="{{route('products.store')}}"  enctype="multipart/form-data">
+                    @csrf 
                   <div class="row">
 <div class="col-12">	
 
@@ -26,79 +27,79 @@
     <div class="row"> <!-- start 1st row  -->
         <div class="col-md-4">
 
- <div class="form-group">
-<h5>Brand Select <span class="text-danger">*</span></h5>
-<div class="controls">
-    <select name="brand_id" class="form-control"  >
-        <option value="" selected="" disabled="">Select Brand</option>
-        @foreach($brands as $brand)
-<option value="{{ $brand->id }}">{{ $brand->brand_name_en }}</option>	
-        @endforeach
-    </select>
-    @error('brand_id') 
- <span class="text-danger">{{ $message }}</span>
- @enderror 
- </div>
-     </div>
+                <div class="form-group">
+                <h5>Brand Select <span class="text-danger">*</span></h5>
+                <div class="controls">
+                    <select name="brand_id" class="form-control"  >
+                        <option value="" selected="" disabled="">Select Brand</option>
+                        @foreach($brands as $brand)
+                <option value="{{ $brand->id }}">{{ $brand->brand_name_en }}</option>	
+                        @endforeach
+                    </select>
+                    @error('brand_id') 
+                <span class="text-danger">{{ $message }}</span>
+                @enderror 
+                </div>
+                    </div>
 
-        </div> <!-- end col md 4 -->
-
-        <div class="col-md-4">
-
-             <div class="form-group">
-<h5>Category Select <span class="text-danger">*</span></h5>
-<div class="controls">
-    <select name="category_id" class="form-control"  >
-        <option value="" selected="" disabled="">Select Category</option>
-        @foreach($categories as $category)
-<option value="{{ $category->id }}">{{ $category->category_name_en }}</option>	
-        @endforeach
-    </select>
-    @error('category_id') 
- <span class="text-danger">{{ $message }}</span>
- @enderror 
- </div>
-     </div>
-
-        </div> <!-- end col md 4 -->
-
+                        </div> <!-- end col md 4 -->
 
         <div class="col-md-4">
 
              <div class="form-group">
-<h5>SubCategory Select <span class="text-danger">*</span></h5>
-<div class="controls">
-    <select name="subcategory_id" class="form-control"  >
-        <option value="" selected="" disabled="">Select SubCategory</option>
+                    <h5>Category Select <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <select name="category_id" class="form-control"  >
+                            <option value="" selected="" disabled="">Select Category</option>
+                            @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->category_name_en }}</option>	
+                            @endforeach
+                        </select>
+                        @error('category_id') 
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror 
+                    </div>
+                        </div>
 
-    </select>
-    @error('subcategory_id') 
- <span class="text-danger">{{ $message }}</span>
- @enderror 
- </div>
-     </div>
+                            </div> <!-- end col md 4 -->
 
-        </div> <!-- end col md 4 -->
+
+        <div class="col-md-4">
+
+             <div class="form-group">
+                    <h5>SubCategory Select <span class="text-danger">*</span></h5>
+                    <div class="controls">
+                        <select name="subcategory_id" class="form-control"  >
+                            <option value="" selected="" disabled="">Select SubCategory</option>
+
+                        </select>
+                        @error('subcategory_id') 
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror 
+                    </div>
+                        </div>
+
+                            </div> <!-- end col md 4 -->
 
     </div> <!-- end 1st row  -->
 
     <div class="row"> <!-- start 2nd row  -->
         <div class="col-md-4">
 
- <div class="form-group">
-<h5>SubSubCategory Select <span class="text-danger">*</span></h5>
-<div class="controls">
-    <select name="subsubcategory_id" class="form-control"  >
-        <option value="" selected="" disabled="">Select SubSubCategory</option>
+                <div class="form-group">
+                <h5>SubSubCategory Select <span class="text-danger">*</span></h5>
+                <div class="controls">
+                    <select name="subsubcategory_id" class="form-control"  >
+                        <option value="" selected="" disabled="">Select SubSubCategory</option>
 
-    </select>
-    @error('subsubcategory_id') 
- <span class="text-danger">{{ $message }}</span>
- @enderror 
- </div>
-     </div>
+                    </select>
+                    @error('subsubcategory_id') 
+                <span class="text-danger">{{ $message }}</span>
+                @enderror 
+                </div>
+                    </div>
 
-        </div> <!-- end col md 4 -->
+                        </div> <!-- end col md 4 -->
 
         <div class="col-md-4">
 
@@ -332,7 +333,7 @@
         <div class="form-group">
             <h5>Short Description English <span class="text-danger">*</span></h5>
 			<div class="controls">
-	<textarea name="short_descp_en" id="textarea" class="form-control" required placeholder="Textarea text"></textarea>     
+	<textarea name="short_descp_en" id="textarea" class="form-control"  placeholder="Textarea text"></textarea>     
 	 		 </div>	
     </div>
 </div>
@@ -344,7 +345,7 @@
         <div class="form-group">
             <h5>Short Description Hindi <span class="text-danger">*</span></h5>
 			<div class="controls">
-	<textarea name="short_descp_hin" id="textarea" class="form-control" required placeholder="Textarea text"></textarea>     
+	<textarea name="short_descp_hin" id="textarea" class="form-control"  placeholder="Textarea text"></textarea>     
 	 		 </div>
         </div>
 </div>
