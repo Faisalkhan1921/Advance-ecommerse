@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\SubSubCategory;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use App\Models\MultiImage;
 use Image;
 
 class ProductsController extends Controller
@@ -30,44 +31,44 @@ class ProductsController extends Controller
 
     public function ProductStore(Request $request)
     {
-        $request->validate(
-            [
-                'brand_id' => 'required',
-                'category_id' => 'required',
-                'subcategory_id' => 'required',
-                'subsubcategory_id' => 'required',
-                'product_name_en' => 'required',
-                'product_name_hin' => 'required',
-                'product_code' => 'required',
-                'product_qty' => 'required',
-                'product_tags_en' => 'required',
-                'product_tags_hin' => 'required',
-                'product_size_en' => 'required',
-                'product_size_hin' => 'required',
-                'product_color_en' => 'required',
-                'product_color_hin' => 'required',
-                'selling_price' => 'required',
-                'discount_price' => 'required',
-                'product_thambnail' => 'required',
-                'multi_img' => 'required',
-                'short_descp_en' => 'required',
-                'short_descp_hin' => 'required',
-                'long_descp_en' => 'required',
-                'long_descp_hindi' => 'required',
-                'hot_deals' => 'required',
-                'featured' => 'required',
-                'special_offer' => 'required',
-                'special_deals' => 'required',
-            ],
+        // $request->validate(
+        //     [
+        //         'brand_id' => 'required',
+        //         'category_id' => 'required',
+        //         'subcategory_id' => 'required',
+        //         'subsubcategory_id' => 'required',
+        //         'product_name_en' => 'required',
+        //         'product_name_hin' => 'required',
+        //         'product_code' => 'required',
+        //         'product_qty' => 'required',
+        //         'product_tags_en' => 'required',
+        //         'product_tags_hin' => 'required',
+        //         'product_size_en' => 'required',
+        //         'product_size_hin' => 'required',
+        //         'product_color_en' => 'required',
+        //         'product_color_hin' => 'required',
+        //         'selling_price' => 'required',
+        //         'discount_price' => 'required',
+        //         'product_thambnail' => 'required',
+        //         'multi_img' => 'required',
+        //         'short_descp_en' => 'required',
+        //         'short_descp_hin' => 'required',
+        //         'long_descp_en' => 'required',
+        //         'long_descp_hindi' => 'required',
+        //         'hot_deals' => 'required',
+        //         'featured' => 'required',
+        //         'special_offer' => 'required',
+        //         'special_deals' => 'required',
+        //     ],
             
-        );
+        // );
 
         $image = $request->file('product_thambnail');
     	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
     	Image::make($image)->resize(917,1000)->save('upload/products/thambnail/'.$name_gen);
     	$save_url = 'upload/products/thambnail/'.$name_gen;
 
-      Product::insert([
+        $product_id = Product::insertGetId([
       	'brand_id' => $request->brand_id,
       	'category_id' => $request->category_id,
       	'subcategory_id' => $request->subcategory_id,
@@ -91,7 +92,7 @@ class ProductsController extends Controller
       	'short_descp_en' => $request->short_descp_en,
       	'short_descp_hin' => $request->short_descp_hin,
       	'long_descp_en' => $request->long_descp_en,
-      	'long_descp_hin' => $request->long_descp_hin,
+      	'long_descp_hin' => $request->long_descp_hindi,
 
       	'hot_deals' => $request->hot_deals,
       	'featured' => $request->featured,
@@ -103,6 +104,43 @@ class ProductsController extends Controller
       	'created_at' => Carbon::now(),  
         
       ]);
+
+        ////////// Multiple Image Upload Start ///////////
+
+        $images = $request->file('multi_img');
+        foreach ($images as $img)
+        {
+            $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+            Image::make($img)->resize(917,1000)->save('upload/products/multi_image/'.$make_name);
+            $uploadPath = 'upload/products/multi_image/'.$make_name;
+        
+        
+          MultiImage::insert([
+  
+              'product_id' => $product_id,
+              'photo_name' => $uploadPath,
+              'created_at' => Carbon::now(), 
+  
+          ]);
+        }
+        
+  
+        ////////// Een Multiple Image Upload Start ///////////
+  
+        $notification = array(
+            'message' => 'Product Inserted Successfully', 
+            'alert-type' => 'success'
+        );
+    
+        return redirect()->route('manage.products')->with($notification);
+  
+    }
+
+
+    public function ViewProducts()
+    {
+        $product_data = Product::latest()->get();
+        return view('admin.product.product_view',compact('product_data'));
     }
 
 }

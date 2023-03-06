@@ -406,12 +406,12 @@
         <div class="form-group">
             <div class="controls">
                 <fieldset>
-                    <input type="checkbox" id="checkbox_2" name="special_offer" value="1">
-                    <label for="checkbox_2">Special Offers</label>
+                    <input type="checkbox" id="checkbox_4" name="special_offer" value="1">
+                    <label for="checkbox_4">Special Offers</label>
                 </fieldset>
                 <fieldset>
-                    <input type="checkbox" id="checkbox_3" name="special_deals" value="1">
-                    <label for="checkbox_3">Special Deals</label>
+                    <input type="checkbox" id="checkbox_5" name="special_deals" value="1">
+                    <label for="checkbox_5">Special Deals</label>
                 </fieldset>
             </div>
         </div>
