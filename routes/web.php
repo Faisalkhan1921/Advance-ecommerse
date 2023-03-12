@@ -69,6 +69,7 @@ Route::get('/category/sub_subcategory/ajax/{subcategory_id}', [ProductsControlle
 Route::post('/store/products',[ProductsController::class,'ProductStore'])->name('products.store');
 Route::get('/view/products',[ProductsController::class,'ViewProducts'])->name('manage.products');
 Route::get('/edit/product/{id}',[ProductsController::class,'EditProduct'])->name('edit.products');
+Route::post('/update/product/data/{id}',[ProductsController::class,'UpdateProductData'])->name('products.data.update');
 
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {

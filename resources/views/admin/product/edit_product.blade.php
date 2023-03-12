@@ -18,7 +18,7 @@
         <div class="box-body">
           <div class="row">
             <div class="col">
-                <form  method="POST" action="{{route('products.store')}}"  enctype="multipart/form-data">
+                <form  method="POST" action="{{route('products.data.update',$product->id)}}"  >
                     @csrf 
                   <div class="row">
 <div class="col-12">	
@@ -231,7 +231,7 @@
 
  {{-- start of 5th row here  --}}
  <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="form-group">
 			<h5>Product Color En <span class="text-danger">*</span></h5>
 	 <input type="text" name="product_color_en" class="form-control" value="red,Black,Amet" data-role="tagsinput" value="{{$product->product_color_en}}">
@@ -245,7 +245,7 @@
     {{-- end of col-md-4 --}}
 
 
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="form-group">
             <h5>Product Color Hin <span class="text-danger">*</span></h5>
 			<div class="controls">
@@ -261,15 +261,7 @@
 
     <div class="col-md-4">
         
-             <div class="form-group">
-                <h5>Product Selling Price <span class="text-danger">*</span></h5>
-			<div class="controls">
-				<input type="text" name="selling_price" class="form-control" value="{{$product->selling_price}}">
-     @error('selling_price') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
-	 	  </div>
-            </div>
+            
     </div>
     {{-- end of col-md-4 --}}
 
@@ -279,7 +271,7 @@
 
 {{-- start of 6th row here  --}}
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="form-group">
 			<h5>Product Discount Price <span class="text-danger">*</span></h5>
 			<div class="controls">
@@ -294,17 +286,16 @@
 
     
 
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="form-group">
-            <h5>Main Thambnail <span class="text-danger">*</span></h5>
-			<div class="controls">
-	 <input type="file" name="product_thambnail" class="form-control" onchange="mainThumUrl(this)" >
-     @error('product_thambnail') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
-     <img src="" alt="" id="mainThum">
-	 		 </div>
-	 		 </div>
+            <h5>Product Selling Price <span class="text-danger">*</span></h5>
+        <div class="controls">
+            <input type="text" name="selling_price" class="form-control" value="{{$product->selling_price}}">
+ @error('selling_price') 
+ <span class="text-danger">{{ $message }}</span>
+ @enderror
+       </div>
+        </div>
 
         </div>
     {{-- end of col-md-4 --}}
@@ -312,16 +303,7 @@
 
     <div class="col-md-4">
         
-             <div class="form-group">
-                <h5>Multiple Image <span class="text-danger">*</span></h5>
-			<div class="controls">
-	 <input type="file" name="multi_img[]" multiple="" id="multiImg" class="form-control" >
-     @error('multi_img') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
-     <div class="row" id="preview_image"></div>
-	 		 </div>
-            </div>
+         
     </div>
     {{-- end of col-md-4 --}}
 
