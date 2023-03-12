@@ -10,6 +10,7 @@ use App\Models\SubSubCategory;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\MultiImage;
+use App\Models\SubCategory;
 use Image;
 
 class ProductsController extends Controller
@@ -141,6 +142,18 @@ class ProductsController extends Controller
     {
         $product_data = Product::latest()->get();
         return view('admin.product.product_view',compact('product_data'));
+    }
+
+    public function EditProduct($id)
+    {
+        $brands = Brand::latest()->get();
+        $categories  = Category::latest()->get();
+        $subcat = SubCategory::latest()->get();
+        $sub_subcat = SubSubCategory::latest()->get();
+
+        $product = Product::findOrFail($id);
+
+        return view('admin.product.edit_product',compact('brands','categories','subcat','sub_subcat','product'));
     }
 
 }

@@ -50,7 +50,7 @@
                             <td>{{$data->discount_price}}</td>
                            
                             <td>
-                              <a href="{{route('edit.sub_subcat',$data->id)}}" class="btn btn-sm  btn-outline bg-info"><i class="bi bi-pencil-fill"></i></a>
+                              <a href="{{route('edit.products',$data->id)}}" class="btn btn-sm  btn-outline bg-info"><i class="bi bi-pencil-fill"></i></a>
                             </td>
                             <td>
                                 <a id="delete" href="{{route('delete.sub_subcat',$data->id)}}" class="btn btn-sm  btn-outline bg-danger"><i class="bi bi-trash"></i></a>
