@@ -153,7 +153,8 @@ class ProductsController extends Controller
 
         $product = Product::findOrFail($id);
 
-        return view('admin.product.edit_product',compact('brands','categories','subcat','sub_subcat','product'));
+        $multi_image = MultiImage::WHERE('product_id',$id)->get();
+        return view('admin.product.edit_product',compact('brands','categories','subcat','sub_subcat','product','multi_image'));
     }
 
     public function UpdateProductData(Request $request, $id)

@@ -420,6 +420,55 @@
 
     </section>
     <!-- /.content -->
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box bt-3 border-info">
+                    <div class="box-header">
+                        <h4 class="box-title">Product Thumbnail and Multi_Image<strong>Update</strong></h4>
+                    </div>
+
+                    <form action="" enctype="multipart/form-data">
+                        <div class="row row-sm">
+                            @foreach($multi_image as $img)
+                            <div class="col-md-3">
+            
+                                <div class="card">
+                                <img src="{{ asset($img->photo_name) }}" class="card-img-top" style="height: 130px; width: 280px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                <a href="" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i> </a>
+                                    </h5>
+                                    <p class="card-text"> 
+                                        <div class="form-group">
+                                            <label class="form-control-label">Change Image <span class="tx-danger">*</span></label>
+                                            <input class="form-control" type="file" name="multi_img[ $img->id ]">
+                                        </div> 
+                                    </p>
+                                
+                                </div>
+                                </div> 		
+                                
+                            </div><!--  end col md 3		 -->	
+                            @endforeach
+            
+                        </div>			
+            
+                        <div class="text-xs-right">
+            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image">
+                     </div>
+            <br><br>
+            
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
   </div>
 
 
