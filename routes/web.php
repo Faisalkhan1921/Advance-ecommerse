@@ -70,7 +70,12 @@ Route::post('/store/products',[ProductsController::class,'ProductStore'])->name(
 Route::get('/view/products',[ProductsController::class,'ViewProducts'])->name('manage.products');
 Route::get('/edit/product/{id}',[ProductsController::class,'EditProduct'])->name('edit.products');
 Route::post('/update/product/data/{id}',[ProductsController::class,'UpdateProductData'])->name('products.data.update');
-
+Route::post('/update/product/multi_image',[ProductsController::class,'UpdateProductMultiImg'])->name('update.product_multi_image');
+Route::post('/update/product/thumbnail/{id}',[ProductsController::class,'UpdateProductThumbnail'])->name('update.product_thumbnail');
+Route::get('/delete/product/multi_image/{id}',[ProductsController::class,'DeleteMultiImage'])->name('product.multi_delete');
+Route::get('product/inactive/{id}',[ProductsController::class,'ProductInactive'])->name('product.inactive');
+Route::get('product/active/{id}',[ProductsController::class,'Productactive'])->name('product.active');
+Route::get('delete/prodcut/{id}',[ProductsController::class,'DeleteProduct'])->name('delete.product');
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

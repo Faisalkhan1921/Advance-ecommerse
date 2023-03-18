@@ -421,15 +421,17 @@
     </section>
     <!-- /.content -->
 
+    {{-- product multi image start secction  --}}
     <section class="content">
         <div class="row">
             <div class="col-md-12">
                 <div class="box bt-3 border-info">
                     <div class="box-header">
-                        <h4 class="box-title">Product Thumbnail and Multi_Image<strong>Update</strong></h4>
+                        <h4 class="box-title">Product  Multi_Image<strong>Update</strong></h4>
                     </div>
 
-                    <form action="" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('update.product_multi_image')}}" enctype="multipart/form-data">
+                        @csrf
                         <div class="row row-sm">
                             @foreach($multi_image as $img)
                             <div class="col-md-3">
@@ -438,13 +440,16 @@
                                 <img src="{{ asset($img->photo_name) }}" class="card-img-top" style="height: 130px; width: 280px;">
                                 <div class="card-body">
                                     <h5 class="card-title">
-                                <a href="" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i> </a>
+                                <a href="{{route('product.multi_delete',$img->id)}}" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i> </a>
                                     </h5>
                                     <p class="card-text"> 
                                         <div class="form-group">
                                             <label class="form-control-label">Change Image <span class="tx-danger">*</span></label>
-                                            <input class="form-control" type="file" name="multi_img[ $img->id ]">
+                                            <input class="form-control" type="file" id="multiImg" name="multi_img[ {{$img->id}} ]">
                                         </div> 
+                                        <div class="row" id="preview_image">
+
+                                        </div>
                                     </p>
                                 
                                 </div>
@@ -465,9 +470,58 @@
             </div>
         </div>
     </section>
+    {{-- end of product multi image  --}}
 
 
+    {{-- product multi image start secction  --}}
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box bt-3 border-info">
+                    <div class="box-header">
+                        <h4 class="box-title">Product Thumbnail<strong>Update</strong></h4>
+                    </div>
 
+                    <form method="POST" action="{{route('update.product_thumbnail',$product->id)}}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row row-sm">
+                       
+                            <div class="col-md-3">
+            
+                                <div class="card">
+                                <img src="{{ asset($product->product_thambnail) }}" class="card-img-top" style="height: 130px; width: 280px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                <a href="" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i> </a>
+                                    </h5>
+                                    <p class="card-text"> 
+                                        <div class="form-group">
+                                            <label class="form-control-label">Change Image <span class="tx-danger">*</span></label>
+                                            <input class="form-control" type="file"  name="product_thambnail" onchange="mainThumUrl(this)">
+                                        </div> 
+                                        <div class="row" id="preview_image">
+                                            <img src="" alt="" id="mainThum">
+                                        </div>
+                                    </p>
+                                
+                                </div>
+                                </div> 		
+                                
+                            </div><!--  end col md 3		 -->	
+                    
+                        </div>			
+            
+                        <div class="text-xs-right">
+            <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Thumbnail">
+                     </div>
+            <br><br>
+            
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- end of product thumbnail image  --}}
 
   </div>
 
