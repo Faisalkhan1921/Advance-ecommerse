@@ -6,9 +6,11 @@ use App\Http\Controllers\Backend\AdminProfile;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductsController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Models\Slider;
 use App\Models\SubSubCategory;
 
 Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
@@ -76,6 +78,17 @@ Route::get('/delete/product/multi_image/{id}',[ProductsController::class,'Delete
 Route::get('product/inactive/{id}',[ProductsController::class,'ProductInactive'])->name('product.inactive');
 Route::get('product/active/{id}',[ProductsController::class,'Productactive'])->name('product.active');
 Route::get('delete/prodcut/{id}',[ProductsController::class,'DeleteProduct'])->name('delete.product');
+
+
+//SLIDER SECTION 
+Route::prefix('slider')->group(function(){
+Route::get('manage',[SliderController::class,'IndexSlider'])->name('manage.slider');
+Route::post('store',[SliderController::class,'SliderStore'])->name('slider.store');
+Route::get('edit/{id}',[SliderController::class,'SliderEdit'])->name('edit.slider');
+Route::post('update/{id}',[SliderController::class,'SliderUpdate'])->name('slider.update');
+Route::post('delete/{id}',[SliderController::class,'SliderDelete'])->name('delete.slider');
+});
+
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
