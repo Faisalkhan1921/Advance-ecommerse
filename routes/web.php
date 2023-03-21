@@ -86,7 +86,9 @@ Route::get('manage',[SliderController::class,'IndexSlider'])->name('manage.slide
 Route::post('store',[SliderController::class,'SliderStore'])->name('slider.store');
 Route::get('edit/{id}',[SliderController::class,'SliderEdit'])->name('edit.slider');
 Route::post('update/{id}',[SliderController::class,'SliderUpdate'])->name('slider.update');
-Route::post('delete/{id}',[SliderController::class,'SliderDelete'])->name('delete.slider');
+Route::get('delete/{id}',[SliderController::class,'SliderDelete'])->name('delete.slider');
+Route::get('inactive/{id}',[SliderController::class,'SliderInactive'])->name('slider.inactive');
+Route::get('active/{id}',[SliderController::class,'SliderActive'])->name('slider.active');
 });
 
 

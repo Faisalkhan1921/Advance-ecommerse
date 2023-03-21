@@ -120,9 +120,9 @@
                            
 
                             @if($data->status == 1)
-                            <a href="{{ route('product.inactive',$data->id) }}" class="btn btn-danger btn-sm" title="Inactive Now"><i class="fa fa-arrow-down"></i> </a>
+                            <a href="{{ route('slider.inactive',$data->id) }}" class="btn btn-danger btn-sm" title="Inactive Now"><i class="fa fa-arrow-down"></i> </a>
                               @else
-                            <a href="{{ route('product.active',$data->id) }}" class="btn btn-success btn-sm" title="Active Now"><i class="fa fa-arrow-up"></i> </a>
+                            <a href="{{ route('slider.active',$data->id) }}" class="btn btn-success btn-sm" title="Active Now"><i class="fa fa-arrow-up"></i> </a>
                               @endif
                             </td>
                         </tr>
